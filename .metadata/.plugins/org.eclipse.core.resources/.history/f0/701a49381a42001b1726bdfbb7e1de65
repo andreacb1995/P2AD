@@ -1,0 +1,79 @@
+package modelo.modelo.facade;
+
+import java.io.File;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import controlador.ModulosController;
+import modelo.modelo.facade.JAXBContext;
+import modelo.modelo.facade.JAXBException;
+import modelo.modelo.facade.Marshaller;
+import modelo.modelo.facade.Unmarshaller;
+import modelo.modelo.vo.ModuloVO;
+import modelo.modelo.vo.ModulosVO;
+
+public class ModulosFacade {
+	 private ModulosFacade() {
+	    }
+
+
+	public static void agregarModulo(String nombre, int ciclo, String curso, int horas) {
+		ModuloVO moduloAñadido=new ModuloVO(null,nombre,curso,ciclo,horas);
+        ModulosVO modulos=unmarshaller();
+        if (modulos!=null) {
+            int mayorId=0;
+            if (!modulos.getModulos().isEmpty()) {
+                for (ModuloVO m : modulos.getModulos()) {
+                    if (m.getId()>mayorId) {
+                        mayorId=m.getId();
+                    }
+                }
+                moduloAñadido.setId(mayorId+1);
+            } else {
+                moduloAñadido.setId(0);
+            }
+            modulos.agregarModulo(moduloAñadido);
+            marshaller(modulos);
+        }
+		
+	}
+
+	public static void editarModulo(Integer id, String nombre, int ciclo, String curso, int horas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void eliminarModulo(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static List<String[]> listaModulo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public static void marshaller(ModulosVO modulos) {
+        try {
+            JAXBContext ctx=JAXBContext.newInstance(ModulosVO.class);
+            Marshaller ms=ctx.createMarshaller();
+            ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
+            ms.marshal(modulos,new File("src/Modulo.xml"));
+        } catch (JAXBException e) {
+            Logger.getLogger(ModulosController.class.getName()).log(Level.SEVERE,"Error durante el unmarshalling",e);
+        }
+    }
+
+    public static ModulosVO unmarshaller() {
+        try {
+            JAXBContext ctx=JAXBContext.newInstance(ModulosVO.class);
+            Unmarshaller ums=ctx.createUnmarshaller();
+            return (ModulosVO) ums.unmarshal(new File("src/Modulo.xml"));
+        } catch (JAXBException e) {
+            Logger.getLogger(ModulosController.class.getName()).log(Level.SEVERE,"Error durante el marshalling",e);
+        }
+        return null;
+    }
+}

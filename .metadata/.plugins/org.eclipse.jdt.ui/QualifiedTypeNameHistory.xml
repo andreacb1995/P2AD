@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="vista.ModulosUI"/>
+    <fullyQualifiedTypeName name="modelo.modelo.facade.ModulosFacade"/>
+    <fullyQualifiedTypeName name="modelo.modelo.vo.AlumnoVO"/>
+    <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+</qualifiedTypeNameHistroy>

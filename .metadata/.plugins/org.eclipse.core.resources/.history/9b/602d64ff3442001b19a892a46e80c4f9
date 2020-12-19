@@ -1,0 +1,110 @@
+package modelo.modelo.facade;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import controlador.ModulosController;
+import modelo.modelo.vo.AlumnoVO;
+import modelo.modelo.vo.AlumnosVO;
+
+
+public class AlumnoFacade {
+	private static ArrayList<AlumnoVO> listaAlumnos;
+	
+public AlumnoFacade() {
+		
+	}
+
+public static void nuevoAlumno() {
+	
+	try {
+		AlumnoVO alumno=new AlumnoVO();
+		alumno.setDni("");
+		alumno.setNombre("");
+		alumno.setApellido1("");
+		alumno.setApellido2("");
+		alumno.setTelefono(111111111);
+		
+		listaAlumnos.add(alumno);
+		
+		AlumnosVO alumnos=new AlumnosVO();
+		alumnos.setAlumno(listaAlumnos);
+		
+		JAXBContext jaxbContext=JAXBContext.newInstance(AlumnoVO.class);
+		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(alumnos, new File("src\\Alumno.xml"));
+		
+	} catch(JAXBException ex) {
+		Logger.getLogger(ModulosController.class.getName()).log(Level.SEVERE,null,ex);
+	}	
+}
+
+public static void listarAlumno() {
+	
+	try {
+		JAXBContext jaxbContext=JAXBContext.newInstance(AlumnoVO.class);
+		Unmarshaller jaxbUnmarshaller=jaxbContext.createUnmarshaller();
+		AlumnosVO alumnos=(AlumnosVO)jaxbUnmarshaller.unmarshal(new File("src\\Alumno.xml"));
+				
+		for(AlumnoVO alumno : alumnos.getAlumno()) {
+			System.out.println(alumno.getDni()+"\n"+alumno.getNombre()+"\n"+alumno.getApellido1()+"\n"+
+					alumno.getApellido2()+"\n"+alumno.getTelefono());
+		}
+		
+	} catch(JAXBException ex2) {
+		Logger.getLogger(ModulosController.class.getName()).log(Level.SEVERE,null,ex2);
+	}	
+}
+
+public static void actualizarAlumno(String dni) {
+	
+	try {
+		String seleccion=dni;
+		AlumnoVO alumno=new AlumnoVO();
+		for(int i=0;i<listaAlumnos.size();i++) {
+			if(listaAlumnos.get(i).getDni()==seleccion) {
+				listaAlumnos.set(i,alumno);
+			}
+		}
+		
+		AlumnosVO alumnos=new AlumnosVO();
+		alumnos.setAlumno(listaAlumnos);
+		
+		JAXBContext jaxbContext=JAXBContext.newInstance(AlumnoVO.class);
+		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(alumnos, new File("src\\Alumno.xml"));
+		
+	} catch(JAXBException ex) {
+		Logger.getLogger(ModulosController.class.getName()).log(Level.SEVERE,null,ex);
+	}	
+}
+
+public static void eliminarAlumno(String dni) {
+	
+	try {
+		String seleccion=dni;
+		for(int i=0;i<listaAlumnos.size();i++) {
+			if(listaAlumnos.get(i).getDni()==seleccion) {
+				listaAlumnos.remove(i);
+			}
+		}
+		
+		AlumnosVO alumnos=new AlumnosVO();
+		alumnos.setAlumno(listaAlumnos);
+		
+		JAXBContext jaxbContext=JAXBContext.newInstance(AlumnoVO.class);
+		Marshaller jaxbMarshaller=jaxbContext.createMarshaller();
+		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		jaxbMarshaller.marshal(alumnos, new File("src\\Alumno.xml"));
+		
+	} catch(JAXBException ex) {
+		Logger.getLogger(ModulosController.class.getName()).log(Level.SEVERE,null,ex);
+	}	
+}
+}
+
+}

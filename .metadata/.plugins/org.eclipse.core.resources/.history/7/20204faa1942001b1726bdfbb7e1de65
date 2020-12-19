@@ -1,0 +1,29 @@
+package modelo.modelo.facade;
+
+import java.util.List;
+
+public class ModulosFacade {
+
+
+
+	public static void agregarModulo(String nombre, int ciclo, String curso, int horas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void editarModulo(Integer id, String nombre, int ciclo, String curso, int horas) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void eliminarModulo(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static List<String[]> listaModulo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

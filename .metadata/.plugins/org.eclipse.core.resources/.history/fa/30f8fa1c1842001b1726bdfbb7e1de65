@@ -1,0 +1,18 @@
+package modelo.modelo.vo;
+
+import java.util.List;
+
+
+
+public class Cursan {
+	private List<CursaVO> cursan;
+
+	public List<CursaVO> getCursan() {
+		return cursan;
+	}
+	
+	@XmlElement(name="cursa")
+	public void setCursan(List<CursaVO> cursan) {
+		this.cursan = cursan;
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 6 elements to &apos;AndreaCarballidoP2AD/src&apos;&#x0D;&#x0A;- Original project: &apos;MiguelP2AD&apos;&#x0D;&#x0A;- Destination element: &apos;AndreaCarballidoP2AD/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Ej2_AD_Modulo.xml&#x0D;&#x0A;     Ej2_AD_Modulo.xsd&#x0D;&#x0A;     EJ2_AD_Alumno.xsd&#x0D;&#x0A;     Ej2_ Cursa.xml&#x0D;&#x0A;     Ej2_AD_Cursa.xsd&#x0D;&#x0A;     Ej2_AD_Alumno.xml" description="Copy files" destination="=AndreaCarballidoP2AD/src" element1="src/Ej2_AD_Modulo.xml" element2="src/Ej2_AD_Modulo.xsd" element3="src/EJ2_AD_Alumno.xsd" element4="src/Ej2_ Cursa.xml" element5="src/Ej2_AD_Cursa.xsd" element6="src/Ej2_AD_Alumno.xml" files="6" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1608392905084" units="0" version="1.0"/>
+</session>
